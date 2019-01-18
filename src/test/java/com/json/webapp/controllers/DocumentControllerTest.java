@@ -82,9 +82,9 @@ public class DocumentControllerTest {
         ResponseEntity responseEntity = documentController.saveDocumentInfoByLink(linkOnDocuments);
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertNotNull(responseEntity.getBody());
 
         int amountSavedDocuments = ((List<Document>) responseEntity.getBody()).size();
-        assertNotNull(responseEntity.getBody());
 
         responseEntity = documentController.getSavedDocuments();
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
