@@ -14,9 +14,8 @@ import java.io.IOException;
 
 /**
  * Wraps each HTTP request with following aspects:
- * 1) setup RID in thread-local
- * 2) log HTTP request
- * 3) measure request timing
+ * 1) log HTTP request
+ * 2) measure request timing
  */
 @Configuration
 public class HttpRequestFilter {
@@ -41,7 +40,6 @@ public class HttpRequestFilter {
         @Override
         public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
             HttpServletRequest httpRequest = (HttpServletRequest) request;
-            HttpServletResponse httpResponse = (HttpServletResponse) response;
 
             long startMs = System.currentTimeMillis();
             START_MS.set(startMs);
